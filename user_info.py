@@ -4,13 +4,16 @@ import spotipy
 from spotipy import util
 from auth import authenticate
 
-
 def user_info(top_tracks=10, top_artists=10, playlists=100):
-  sp = authenticate()
+  sp = get_user()
   get_user_display_name(sp)
   get_user_top_tracks(sp, top_tracks)
   get_user_top_artists(sp, top_artists)
   get_user_playlists(sp, playlists)
+
+def get_user():
+  sp = authenticate()
+  return sp
 
 def get_user_display_name(sp):
   user = sp.current_user()
