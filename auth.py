@@ -6,7 +6,7 @@ from spotipy import util
 from secret import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI
 
 def authenticate():
-  scope = 'user-library-read'
+  scope = 'user-library-read user-top-read'
   token = util.prompt_for_user_token('user', scope, client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI)
   if token:
     return spotipy.Spotify(auth=token)
