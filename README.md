@@ -1,1 +1,4 @@
 # SpotifyWrapped
+
+
+## Getting Started
