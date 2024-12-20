@@ -4,10 +4,10 @@
 
 import spotipy
 from spotipy import util
-from auth import authenticate
+from user_info import get_user
 
-def print_albums(albums):
-  albums = get_albums(get_sp())
+def print_albums():
+  albums = get_albums(get_user())
   for album in albums:
     print(album['name'])
 
@@ -20,10 +20,6 @@ def get_albums(sp):
     albums.extend(results['items'])
   return albums
 
-def get_sp():
-  sp = authenticate()
-  return sp
-
 
 def prompt_user():  
   artist_uri = input("Enter the artist URI: ")
@@ -33,7 +29,5 @@ def prompt_user():
 
 
 if __name__ == "__main__":
-  print_albums(get_albums(get_sp()))
+  print_albums()
 
-# right now its asking for artist URI twice, need to fix that
-# also need to add exception handling for invalid URI
