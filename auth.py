@@ -3,11 +3,12 @@
 
 import spotipy
 from spotipy import util
-from secret import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI
+from spotipy.oauth2 import SpotifyOAuth
+from secret import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SCOPE
+
 
 def authenticate():
-  scope = 'user-library-read user-top-read'
-  token = util.prompt_for_user_token('user', scope, client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI)
+  token = util.prompt_for_user_token('user', SCOPE, client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI)
   if token:
     return spotipy.Spotify(auth=token)
   else:
